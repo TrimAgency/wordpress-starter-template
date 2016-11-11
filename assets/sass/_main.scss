@@ -33,8 +33,9 @@ Modified to fit Trim Agency SCSS style guide.
 3.0 - Pages
 4.0 - Components
 5.0 - Layout
-    6.1 - Header
-    6.6 - Footer
+    5.1 - Header
+    5.2 - Footer
+6.0 - Flex Box Grid
 
 --------------------------------------------------------------*/
 
@@ -79,4 +80,9 @@ Modified to fit Trim Agency SCSS style guide.
     6.6 Footer
     --------------------------------------------------------------*/
     @import 'layouts/footer';
+
+/*--------------------------------------------------------------
+6.0 Flex Box Grid
+--------------------------------------------------------------*/
+@import 'node_modules/flexboxgrid/dist/flexboxgrid.css';
 
