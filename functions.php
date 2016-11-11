@@ -168,15 +168,15 @@ if ( ! function_exists( 'some_like_it_neat_scripts' ) ) :
 		wp_register_script( 'modernizr-js', get_template_directory_uri() . '/assets/js/vendor/modernizr/modernizr.js', array( 'jquery' ), '2.8.2', false );
 		wp_enqueue_script( 'modernizr-js' );
 
-		wp_register_script( 'selectivizr-js', get_template_directory_uri() . '/assets/js/vendor/selectivizr/selectivizr.js', array( 'jquery' ), '1.0.2b', false );
-		wp_enqueue_script( 'selectivizr-js' );
-  		wp_script_add_data( 'selectivizr-js', 'conditional', '(gte IE 6)&(lte IE 8)' );
+		//wp_register_script( 'selectivizr-js', get_template_directory_uri() . '/assets/js/vendor/selectivizr/selectivizr.js', array( 'jquery' ), '1.0.2b', false );
+		//wp_enqueue_script( 'selectivizr-js' );
+  		//wp_script_add_data( 'selectivizr-js', 'conditional', '(gte IE 6)&(lte IE 8)' );
 
-		wp_register_script( 'flexnav-js', get_template_directory_uri() . '/assets/js/vendor/flexnav/jquery.flexnav.js', array( 'jquery' ), '1.3.3', true );
-		wp_enqueue_script( 'flexnav-js' );
+		//wp_register_script( 'flexnav-js', get_template_directory_uri() . '/assets/js/vendor/flexnav/jquery.flexnav.js', array( 'jquery' ), '1.3.3', true );
+		//wp_enqueue_script( 'flexnav-js' );
 
-		wp_register_script( 'hoverintent-js', get_template_directory_uri() . '/assets/js/vendor/hoverintent/jquery.hoverIntent.js', array( 'jquery' ), '1.0.0', true );
-		wp_enqueue_script( 'hoverintent-js' );
+		//wp_register_script( 'hoverintent-js', get_template_directory_uri() . '/assets/js/vendor/hoverintent/jquery.hoverIntent.js', array( 'jquery' ), '1.0.0', true );
+		//wp_enqueue_script( 'hoverintent-js' );
 
 		// Green-sock libraries
 		// wp_register_script( 'tweenLite-js', get_template_directory_uri() . '/assets/js/vendor/greensock/TweenLite.min.js' );
@@ -272,27 +272,27 @@ add_action( 'widgets_init', 'some_like_it_neat_widgets_init' );
 /**
  * Initializing Flexnav Menu System
  */
-if ( ! function_exists( 'dg_add_flexnav' ) ) :
-	function dg_add_flexnav()
-	{
-	?>
-		<script>
-			// Init Flexnav Menu
-			jQuery(document).ready(function($){
-				$(".flexnav").flexNav({
-					'animationSpeed' : 250, // default drop animation speed
-					'transitionOpacity': true, // default opacity animation
-					'buttonSelector': '.menu-button', // default menu button class
-					'hoverIntent': true, // use with hoverIntent plugin
-					'hoverIntentTimeout': 350, // hoverIntent default timeout
-					'calcItemWidths': false // dynamically calcs top level nav item widths
-				});
-			});
-		</script>
-	<?php
-	}
-	add_action( 'wp_footer', 'dg_add_flexnav' );
-endif;
+/* if ( ! function_exists( 'dg_add_flexnav' ) ) : */
+/* 	function dg_add_flexnav() */
+/* 	{ */
+/* 	?> */
+/* 		<script> */
+/* 			// Init Flexnav Menu */
+/* 			jQuery(document).ready(function($){ */
+/* 				$(".flexnav").flexNav({ */
+/* 					'animationSpeed' : 250, // default drop animation speed */
+/* 					'transitionOpacity': true, // default opacity animation */
+/* 					'buttonSelector': '.menu-button', // default menu button class */
+/* 					'hoverIntent': true, // use with hoverIntent plugin */
+/* 					'hoverIntentTimeout': 350, // hoverIntent default timeout */
+/* 					'calcItemWidths': false // dynamically calcs top level nav item widths */
+/* 				}); */
+/* 			}); */
+/* 		</script> */
+/* 	<?php */
+/* 	} */
+/* 	add_action( 'wp_footer', 'dg_add_flexnav' ); */
+/* endif; */
 
 /**
  * Add Singular Post Template Navigation

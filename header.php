@@ -37,7 +37,7 @@
 
 		<header id="masthead" class="site-header wrap" role="banner">
 			<!-- begin vertical nav bar -->
-		  <nav class="js-menu sliding-panel-content nav-bar-flex">
+		  <nav class="js-menu">
 				<?php
 						wp_nav_menu(
 							array(
@@ -46,19 +46,8 @@
 							)
 						);
 				?>
-				<div>
-					<button class="hamburger hamburger--collapse js-menu-trigger sliding-panel-button" type="button">
-					  <span class="hamburger-box">
-					    <span class="hamburger-inner"></span>
-					  </span>
-					</button>
-				</div>
 		  </nav>
-
-		  <div class="js-menu-screen sliding-panel-fade-screen"></div>
-
 
 		</header><!-- #masthead -->
 
 		<main class="site-main wrap" role="main">
-			<!-- <?php tha_content_top(); ?> -->

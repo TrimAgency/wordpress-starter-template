@@ -8,9 +8,6 @@
  */
 ?>
 
-		<footer id="colophon" class="footer">
-			
-		</footer>
 
 
 	</div>
