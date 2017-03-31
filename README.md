@@ -1,8 +1,10 @@
 # trim-starter
 
 Upon cloning the repo, cd into trim-starter theme dir.
-- npm install
-- bower install
+- `npm install` or `yarn install`
+
+Docker Container:
+- `docker-compose up`
 
 Gulp task manager is set to handle Sass to CSS minification, JSHint, browserSync and theme builder for production ready zip file to ftp theme.
 #### Gulp Tasks
