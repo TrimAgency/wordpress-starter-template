@@ -1,5 +1,7 @@
-function init() {
-    console.log('hello');
+import * as test from './test';
+
+function init(arg) {
+    console.log(arg());
 }
 
-init();
+init(test.thing());
