@@ -1,16 +1,24 @@
 {
   "name": "trim-wordpress-starter",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "devDependencies": {
     "awesome-typescript-loader": "^3.1.3",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-es2015": "^6.24.1",
+    "browser-sync": "^2.18.12",
+    "browser-sync-webpack-plugin": "^1.1.4",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^2.1.2",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "typescript": "^2.3.4",
-    "webpack": "version",
-    "webpack-dev-server": "version"
+    "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
+    "uglifyjs-webpack-plugin": "^0.4.3",
+    "unminified-webpack-plugin": "^1.2.0",
+    "webpack": "^3.0.0"
   },
   "engines": {
     "node": "6.9.2",
@@ -21,7 +29,5 @@
     "angular": "1.6.4",
     "angular-sanitize": "1.6.4"
   },
-  "scripts": {
-    "dev-server": "webpack-dev-server"
-  }
+  "scripts": {}
 }
