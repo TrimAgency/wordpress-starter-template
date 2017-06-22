@@ -68,38 +68,21 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(2);
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-exports.__esModule = true;
-var test_js_1 = __webpack_require__(2);
 function init(arg) {
     console.log(arg());
 }
-test_js_1.thing();
 init('test');
 
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-exports.__esModule = true;
-exports.thing = function (item) {
-    return ['this is needed', 'yes'].includes(item);
-};
-
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -2,6 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 const webpack = require('webpack');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   entry: ['./assets/js/app/app.ts', './assets/sass/style.scss'],
@@ -29,21 +30,14 @@ module.exports = {
     ]
   },
   plugins: [
+    // Minifiy the compiled js file
     new webpack.optimize.UglifyJsPlugin(),
+    // Output a unminified compiled js file
     new UnminifiedWebpackPlugin(),
+    // Output compiled CSS file from all SCSS files
     new ExtractTextPlugin({
       filename: '/assets/css/style.css',
       allChunks: true,
-    }),
-    new BrowserSyncPlugin(
-      {
-        host: 'localhost',
-        port: 3000,
-        proxy: 'http://localhost:8888/'
-      },
-      {
-        reload: true
-      }
-    )
+    })
   ],
 };
