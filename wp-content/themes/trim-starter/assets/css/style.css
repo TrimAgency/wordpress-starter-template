@@ -403,3 +403,8 @@ table {
     --------------------------------------------------------------*/
 .active {
   display: none; }
+
+.current_page_item {
+  font-size: 178px;
+  color: black;
+  font-weight: normal; }

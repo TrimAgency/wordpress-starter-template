@@ -233,18 +233,13 @@ if ( ! function_exists( 'some_like_it_neat_styles' ) ) :
 				get_template_directory_uri() . '/assets/css/style.css', '', '1.2', 'screen'
 			);
 			wp_enqueue_style( 'some_like_it_neat-style' );
-			wp_enqueue_style( 'font-awesome', get_stylesheet_directory_uri() . '/assets/font/font-awesome-4.6.2/css/font-awesome.min.css' );
-			wp_enqueue_style( 'hamburgers', get_stylesheet_directory_uri() . '/assets/css/hamburgers.css' );
-
-
+			
 			else :
 			wp_register_style(
 				'some_like_it_neat-style', // handle name
-				get_template_directory_uri() . '/assets/css/style-min.css', '', '1.2', 'screen'
+				get_template_directory_uri() . '/assets/css/style.css', '', '1.2', 'screen'
 			);
 			wp_enqueue_style( 'some_like_it_neat-style' );
-			wp_enqueue_style( 'font-awesome', get_stylesheet_directory_uri() . '/assets/font/font-awesome-4.6.2/css/font-awesome.min.css' );
-			wp_enqueue_style( 'hamburgers', get_stylesheet_directory_uri() . '/assets/css/hamburgers.css' );
 		endif;
 	}
   add_action( 'wp_enqueue_scripts', 'some_like_it_neat_styles' );
