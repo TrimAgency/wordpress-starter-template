@@ -8,6 +8,7 @@ module.exports = {
   entry: ['./assets/js/app/app.ts', './assets/sass/style.scss'],
   output: {
     filename: 'bundle.min.js',
+    publicPath: '/wp-content/themes/trim-starter/assets/js/',
     path: __dirname + '/assets/js/'
   },
   resolve: {
@@ -39,5 +40,5 @@ module.exports = {
       filename: '/assets/css/style.css',
       allChunks: true,
     })
-  ],
+  ]
 };

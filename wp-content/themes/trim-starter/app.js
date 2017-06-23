@@ -1,16 +1,17 @@
 /**
  * Require Browsersync along with webpack and middleware for it
  */
-var browserSync          = require('browser-sync').create();
-var webpack              = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware');
-var stripAnsi            = require('strip-ansi');
+const browserSync          = require('browser-sync').create();
+const webpack              = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const stripAnsi            = require('strip-ansi');
 
 /**
  * Require ./webpack.config.js and make a bundler from it
  */
-var webpackConfig = require('./webpack.config');
-var bundler       = webpack(webpackConfig);
+const webpackConfig = require('./webpack.config');
+const bundler       = webpack(webpackConfig);
 
 /**
  * Reload all devices when bundle is complete
@@ -36,11 +37,10 @@ browserSync.init({
     proxy: 'http://localhost:8000',
     middleware: [
         webpackDevMiddleware(bundler, {
-            publicPath: 'http://localhost:3000', 
+            publicPath: webpackConfig.output.publicPath, 
             stats: {colors: true}
-        })
+        }),
     ],
     files: [
-        '**/*.php'
-    ]
+        '**/*.php'    ]
 });
