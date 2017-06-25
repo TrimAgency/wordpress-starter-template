@@ -5,9 +5,10 @@ const webpack = require('webpack');
 const extractCSS = new ExtractTextPlugin({ filename: '../css/style.css'});
 
 module.exports = {
-  entry: [ 'webpack-hot-middleware/client',
+  entry: [
            './assets/js/app/app.ts', 
-           './assets/sass/style.scss'],
+           './assets/sass/style.scss'
+  ],
   output: {
     filename: 'bundle.min.js',
     path: __dirname + '/assets/js/'
@@ -38,7 +39,5 @@ module.exports = {
     extractCSS,
     // Minifiy the compiled js file
     new webpack.optimize.UglifyJsPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
   ]
 };
