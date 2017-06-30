@@ -1,8 +1,15 @@
 # trim-starter
 
 Upon cloning the repo, cd into trim-starter theme dir.
-- npm install
-- bower install
+- `npm install` or `yarn install`
+
+Pull down staging wp-config.php and place in root dir.
+- open wp-config.php with text editor and replace DB_HOST with rackspace DB IP.
+- add the following code under 'WP_DEBUG_DISPLAY':
+`define('WP_HOME','http://localhost:8888'); define('WP_SITEURL','http://localhost:8888');`
+
+Docker Container:
+- `docker-compose up`
 
 Gulp task manager is set to handle Sass to CSS minification, JSHint, browserSync and theme builder for production ready zip file to ftp theme.
 #### Gulp Tasks

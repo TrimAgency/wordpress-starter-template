@@ -20,16 +20,16 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'database_name_here');
+define('DB_NAME', 'wordpress');
 
 /** MySQL database username */
-define('DB_USER', 'username_here');
+define('DB_USER', 'wordpress');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'password_here');
+define('DB_PASSWORD', 'wordpress');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', 'db:3306');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -46,14 +46,14 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define('AUTH_KEY',         'put your unique phrase here');
-define('SECURE_AUTH_KEY',  'put your unique phrase here');
-define('LOGGED_IN_KEY',    'put your unique phrase here');
-define('NONCE_KEY',        'put your unique phrase here');
-define('AUTH_SALT',        'put your unique phrase here');
-define('SECURE_AUTH_SALT', 'put your unique phrase here');
-define('LOGGED_IN_SALT',   'put your unique phrase here');
-define('NONCE_SALT',       'put your unique phrase here');
+define('AUTH_KEY',         'ab5cff27ddef80592416699a96e43984cfd77689');
+define('SECURE_AUTH_KEY',  'c896e3fe8d6714f3665847346fbdbb1d850da109');
+define('LOGGED_IN_KEY',    'ea078d222bcf2b27556fde6971feb3a530d3cb2e');
+define('NONCE_KEY',        'b837457d181f7c0783b4f3c0cccf9a4fa730fa47');
+define('AUTH_SALT',        '44d25dbb84bc12219be59c31b68c6e4b2c54b612');
+define('SECURE_AUTH_SALT', 'ce7c65c066d9b7bec177d0d22d2595bf8e6d1d36');
+define('LOGGED_IN_SALT',   '5f5e8c6b0af2fa215d14a9a5f9e1471fa0569e80');
+define('NONCE_SALT',       '09651f04998b2b56889784b003a3b6006a0e22db');
 
 /**#@-*/
 
@@ -77,7 +77,13 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+define('WP_DEBUG', true);
+
+// If we're behind a proxy server and using HTTPS, we need to alert Wordpress of that fact
+// see also http://codex.wordpress.org/Administration_Over_SSL#Using_a_Reverse_Proxy
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+	$_SERVER['HTTPS'] = 'on';
+}
 
 /* That's all, stop editing! Happy blogging. */
 
