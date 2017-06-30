@@ -14,7 +14,7 @@ Upon cloning the repo, cd into trim-starter theme dir.
 ## Webpack
 - `webpack --watch` 
 - changes to typescript or javascript files compile to bundle.js and bundle-min.js
-- chnages to SASS files compile to style.css
+- changes to SASS files compile to style.css
 
 
 ### Folder Structure
