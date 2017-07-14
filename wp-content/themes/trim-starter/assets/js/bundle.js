@@ -75,10 +75,8 @@ module.exports = __webpack_require__(2);
 /* 1 */
 /***/ (function(module, exports) {
 
-function init(arg) {
-    console.log(arg);
-}
-init('init');
+// Entry point for TS /JS.
+// make seperate files for each group of functionality and import into app.ts
 
 
 /***/ }),
