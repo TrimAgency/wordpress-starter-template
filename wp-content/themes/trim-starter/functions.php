@@ -5,6 +5,8 @@
  * @package some_like_it_neat
  */
 
+require('include/post-type-taxonomy.php');
+
 if ( ! function_exists( 'some_like_it_neat_setup' ) ) :
 	/**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -68,7 +70,8 @@ if ( ! function_exists( 'some_like_it_neat_setup' ) ) :
 		add_editor_style( '/assets/css/editor-style.css' );
 
 		// This theme uses wp_nav_menu() in one location.
-		register_nav_menu( 'primary-navigation', __( 'Primary Menu', 'some-like-it-neat' ) );
+    register_nav_menu( 'primary-navigation', __( 'Primary Menu', 'some-like-it-neat' ) );
+    register_nav_menu( 'footer-navigation', __( 'Footer Menu', 'some-like-it-neat' ) );
 
 		// Enable support for Post Formats.
 		if ( 'yes' === get_theme_mod( 'some-like-it-neat_post_format_support' ) ) {
@@ -168,16 +171,6 @@ if ( ! function_exists( 'some_like_it_neat_scripts' ) ) :
 		wp_register_script( 'modernizr-js', get_template_directory_uri() . '/assets/js/vendor/modernizr/modernizr.js', array( 'jquery' ), '2.8.2', false );
 		wp_enqueue_script( 'modernizr-js' );
 
-		//wp_register_script( 'selectivizr-js', get_template_directory_uri() . '/assets/js/vendor/selectivizr/selectivizr.js', array( 'jquery' ), '1.0.2b', false );
-		//wp_enqueue_script( 'selectivizr-js' );
-  		//wp_script_add_data( 'selectivizr-js', 'conditional', '(gte IE 6)&(lte IE 8)' );
-
-		//wp_register_script( 'flexnav-js', get_template_directory_uri() . '/assets/js/vendor/flexnav/jquery.flexnav.js', array( 'jquery' ), '1.3.3', true );
-		//wp_enqueue_script( 'flexnav-js' );
-
-		//wp_register_script( 'hoverintent-js', get_template_directory_uri() . '/assets/js/vendor/hoverintent/jquery.hoverIntent.js', array( 'jquery' ), '1.0.0', true );
-		//wp_enqueue_script( 'hoverintent-js' );
-
 		// Green-sock libraries
 		// wp_register_script( 'tweenLite-js', get_template_directory_uri() . '/assets/js/vendor/greensock/TweenLite.min.js' );
 		// wp_enqueue_script( 'tweenLite-js' );
@@ -190,20 +183,6 @@ if ( ! function_exists( 'some_like_it_neat_scripts' ) ) :
 		//
 		// wp_register_script( 'EasePack-js', get_template_directory_uri() . '/assets/js/vendor/greensock/EasePack.min.js' );
 		// wp_enqueue_script( 'EasePack-js' );
-
-		// Angular libraries
-		// wp_register_script( 'angular-js', get_template_directory_uri() . '/assets/js/vendor/angular/angular.min.js' );
-		// wp_enqueue_script( 'angular-js' );
-		//
-		// wp_register_script( 'angular-sanitize-js', get_template_directory_uri() . '/assets/js/vendor/angular/angular-sanitize.min.js' );
-		// wp_enqueue_script( 'angular-sanitize-js' );
-		//
-		// wp_register_script( 'angular-animate-js', get_template_directory_uri() . '/assets/js/vendor/angular/angular-animate.min.js' );
-		// wp_enqueue_script( 'angular-animate-js' );
-
-
-		// Dashicons
-		wp_enqueue_style( 'dashicons' );
 
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
@@ -289,59 +268,6 @@ if ( ! function_exists( 'some_like_it_neat_post_navigation' ) ) :
 endif;
 add_action( 'tha_entry_after', 'some_like_it_neat_post_navigation' );
 
-/**
- * Custom Hooks and Filters
- */
-
-if ( ! function_exists( 'some_like_it_neat_optional_scripts' ) ) :
-	function some_like_it_neat_optional_scripts()
-	{
-		// Link Color
-		if ( '' != get_theme_mod( 'some_like_it_neat_add_link_color' )  ) {
-		} ?>
-			<style type="text/css">
-				a { color: <?php echo get_theme_mod( 'some_like_it_neat_add_link_color' ); ?>; }
-			</style>
-		<?php
-	}
-	add_action( 'wp_head', 'some_like_it_neat_optional_scripts' );
-endif;
-
-if ( ! function_exists( 'some_like_it_neat_mobile_styles' ) ) :
-	function some_like_it_neat_mobile_styles() {
-
-		$value = get_theme_mod( 'some_like_it_neat_mobile_hide_arrow' );
-
-		if ( 0 == get_theme_mod( 'some_like_it_neat_mobile_hide_arrow' ) ) { ?>
-			<style>
-				.menu-button i.navicon {
-					display: none;
-				}
-			</style>
-		<?php } else {
-
-		}
-	}
-	add_action( 'wp_head', 'some_like_it_neat_mobile_styles' );
-
-endif;
-
-if ( ! function_exists( 'some_like_it_neat_add_footer_divs' ) ) :
-	function some_like_it_neat_add_footer_divs()
-	{
-	?>
-
-			<div class="footer-left">
-				<?php echo esc_attr( get_theme_mod( 'some_like_it_neat_footer_left', __( '&copy; All Rights Reserved', 'some-like-it-neat' ) ) ); ?>
-			</div>
-			<div class="footer-right">
-				<?php echo esc_attr( get_theme_mod( 'some_like_it_neat_footer_right', 'Footer Content Right' ) );  ?>
-			</div>
-		<?php
-	}
-	add_action( 'tha_footer_bottom', 'some_like_it_neat_add_footer_divs' );
-
-endif;
 
 // Prevent Auto br tags from being generated.
 remove_filter( 'the_content', 'wpautop' );
@@ -354,88 +280,3 @@ function wpse_wpautop_nobr( $content ) {
 add_filter( 'the_content', 'wpse_wpautop_nobr' );
 add_filter( 'the_excerpt', 'wpse_wpautop_nobr' );
 
-// custom post types with REST API support 2.0 plugin
-// also support for ACF plugin
-// add_action('init', 'team_post_type');
-// function team_post_type() {
-// 	register_post_type('employees',
-// 		array(
-// 			'labels' => array(
-// 				'name' => __('Team'),
-// 				'add_new'       => __( 'Add Member'),
-// 				'singular_name' => __('Team'),
-// 				'new_item'      => __( 'New Member' ),
-//   			'edit_item'     => __( 'Edit Member'),
-// 				'add_new_item'  => __( 'Add New Member'),
-// 				'view_item'     => __( 'View Member'),
-//   		  'all_items'     => __( 'View Team members'),
-//   		  'search_items'  => __( 'Search Team'),
-// 			),
-// 			'public' => true,
-// 			'has_archive' => true,
-// 			'show_in_rest'=> true,
-// 			'query_var' => true,
-// 			'rest_base' => 'team-api',
-//   		'rest_controller_class' => 'WP_REST_Posts_Controller',
-// 		)
-// 	);
-// }
-// example to add custom post types
-// add_action('init', 'projects_post_type');
-// function projects_post_type() {
-// 	register_post_type('projects',
-// 		array(
-// 			'labels' => array(
-// 				'name' => __('Projects'),
-// 				'singular_name' => __('Project'),
-// 				'add_new'       => __( 'Add Project'),
-// 				'new_item'      => __( 'New Project'),
-//   			'edit_item'     => __( 'Edit Project'),
-// 				'add_new_item'  => __( 'Add New Project' ),
-// 				'view_item'     => __( 'View Project'),
-//   		  'all_items'     => __( 'View Projects'),
-//   		  'search_items'  => __( 'Search Projects'),
-// 			),
-// 			'public' => true,
-// 			'has_archive' => true,
-// 			'show_in_rest'=> true,
-// 			'query_var' => true,
-// 			'rest_base' => 'projects-api',
-//   		'rest_controller_class' => 'WP_REST_Posts_Controller',
-// 			'supports'  => array( 'title', 'editor', 'thumbnail' )
-// 		)
-// 	);
-// }
-
-// custom taxanomy for projects - sample API call using custom type and tax: /wp-json/wp/v2/projects-api?project-category=17
-// add_action( 'init', 'projects_taxonomy', 30 );
-//   function projects_taxonomy() {
-//
-//   	$labels = array(
-//   		'name'              => _x( 'Project Categories', 'taxonomy general name' ),
-//   		'singular_name'     => _x( 'Project Category', 'taxonomy singular name' ),
-//   		'search_items'      => __( 'Search Project Categories' ),
-//   		'all_items'         => __( 'All Project Categories' ),
-//   		'parent_item'       => __( 'Parent Project Category' ),
-//   		'parent_item_colon' => __( 'Parent Project Category:' ),
-//   		'edit_item'         => __( 'Edit Project Category' ),
-//   		'update_item'       => __( 'Update Project Category' ),
-//   		'add_new_item'      => __( 'Add New Project Category' ),
-//   		'new_item_name'     => __( 'New Project Category Name' ),
-//   		'menu_name'         => __( 'Project Category' ),
-//   	);
-//
-//   	$args = array(
-//   		'hierarchical'      => true,
-//   		'labels'            => $labels,
-//   		'show_ui'           => true,
-//   		'show_admin_column' => true,
-//   		'query_var'         => true,
-//   		'show_in_rest'       => true,
-// 			'rest_base' => 'project-category',
-//   		'rest_controller_class' => 'WP_REST_Terms_Controller',
-//   	);
-//
-//   	register_taxonomy( 'project_category', array( 'projects' ), $args );
-//
-//   }
