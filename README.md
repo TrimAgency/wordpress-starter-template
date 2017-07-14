@@ -73,6 +73,7 @@ Upon cloning the repo, cd into trim-starter theme dir.
     ├── comments.php
     ├── footer.php
     ├── functions.php
+    ├── gulpfile.js
     ├── header.php
     ├── index.php
     ├── license.txt
