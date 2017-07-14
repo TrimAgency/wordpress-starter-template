@@ -171,19 +171,6 @@ if ( ! function_exists( 'some_like_it_neat_scripts' ) ) :
 		wp_register_script( 'modernizr-js', get_template_directory_uri() . '/assets/js/vendor/modernizr/modernizr.js', array( 'jquery' ), '2.8.2', false );
 		wp_enqueue_script( 'modernizr-js' );
 
-		// Green-sock libraries
-		// wp_register_script( 'tweenLite-js', get_template_directory_uri() . '/assets/js/vendor/greensock/TweenLite.min.js' );
-		// wp_enqueue_script( 'tweenLite-js' );
-		//
-		// wp_register_script( 'CSSplugin-js', get_template_directory_uri() . '/assets/js/vendor/greensock/CSSPlugin.min.js' );
-		// wp_enqueue_script( 'CSSplugin-js' );
-		//
-		// wp_register_script( 'EaselPlugin-js', get_template_directory_uri() . '/assets/js/vendor/greensock/EaselPlugin.min.js' );
-		// wp_enqueue_script( 'EaselPlugin-js' );
-		//
-		// wp_register_script( 'EasePack-js', get_template_directory_uri() . '/assets/js/vendor/greensock/EasePack.min.js' );
-		// wp_enqueue_script( 'EasePack-js' );
-
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 			wp_enqueue_script( 'comment-reply' );
 		}
