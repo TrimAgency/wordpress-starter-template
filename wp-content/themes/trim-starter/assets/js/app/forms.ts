@@ -45,7 +45,7 @@ class FormHandler {
     // create data object to be passed to server
     makePayload() {
         this.inputNames.forEach( value => {
-            Object.defineProperty(this.makePayload, value, { value: jQuery(value).val() });
+            Object.defineProperty(this.payload, value, { value: jQuery(value).val() });
         })
     }
 
@@ -53,7 +53,7 @@ class FormHandler {
         // ajax action wordpress is looking for to complete request
         let action = { action: this.ajaxActionName }; 
         // typescript object spread operator works like Object.assign
-        let data = { ...this.makePayload, ...action };
+        let data = { ...this.payload, ...action };
 
         jQuery.post('/wp-admin/admin-ajax.php', data, function(response){
           jQuery('#spinner').addClass('hidden');
