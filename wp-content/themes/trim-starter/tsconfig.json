@@ -5,7 +5,7 @@
         "target": "es5",
         "downlevelIteration": true,
         "noImplicitAny": false,
-        "noEmitOnError": true,
+        "noEmitOnError": false,
         "strictNullChecks": true,
         "experimentalDecorators": true
     },
