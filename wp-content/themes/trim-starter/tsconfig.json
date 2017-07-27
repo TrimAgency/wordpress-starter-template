@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "allowJs": true,
+        "target": "es5",
+        "downlevelIteration": true,
+        "noImplicitAny": false,
+        "noEmitOnError": false,
+        "strictNullChecks": true,
+        "experimentalDecorators": true
+    },
+    "exclude": [
+        "assets/js/vendor",
+        "node_modules",
+        "webpack.config.js"
+    ]
+}

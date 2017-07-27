@@ -8,7 +8,7 @@ trim_trailing_whitespace=true
 
 [*.php]
 indent_style=tab
-indent_size=4
+indent_size=2
 
 [{*.css, *.scss, *.js, *.html, package.json, *.yml}]
 indent_style=space

@@ -65,7 +65,10 @@ node_modules
 .idea/
 library/vendors/composer
 assets/img/.DS_Store
-assets/sass/HTML
-assets/sass/Rails
-HTML
-Rails
+
+# Wordpress files
+wp-admin
+wp-includes
+wp-content/plugins
+wp-content/uploads
+
