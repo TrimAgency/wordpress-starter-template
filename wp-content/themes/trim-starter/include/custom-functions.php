@@ -51,11 +51,19 @@ function callAPI($method, $url, $data = false) {
 // // pass in the_field($value) and respective $unit
 // // dependancy: ACF [Pro]
 function format_num($value, $unit) {
-	ob_start();
-	the_field($value);
-	$num = ob_get_contents();
-	ob_end_clean();
+	$num = get_field($value);
 	// format number comma
 	$formattedNum = number_format((int)$num);
 	echo($formattedNum." ".$unit);
+}
+
+// normalize url protocols 
+function url_protocol_handler($url) {
+  if ( strpos($url, "http://") !== FALSE
+  ||   strpos($url, "https://") !== FALSE ) {
+        return $url;
+  } else {
+	$url = "http://" . $url;
+	return $url;
+  }
 }
