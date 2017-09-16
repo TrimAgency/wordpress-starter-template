@@ -3,12 +3,13 @@ wp-admin/**
 wp-includes/**
 wp-content/plugins/**
 wp-content/uploads/**
+wp-content/themes/econ-loss/assets/sass/**
+wp-content/themes/econ-loss/assets/js/app/**
 
 ##Files to ignore
 .DS_Store
 .htaccess
 docker-compose.yml
-index.php
 license.txt
 readme.html
 README.md
@@ -26,5 +27,7 @@ wp-signup.php
 wp-trackback.php
 xmlrpc.php
 wp-cron.php
-wp-content/index.php
-
+wp-content/themes/econ-loss/package.json
+wp-content/themes/econ-loss/yarn.lock
+wp-content/themes/econ-loss/tsconfig.json
+wp-content/themes/econ-loss/webpack.config.js
