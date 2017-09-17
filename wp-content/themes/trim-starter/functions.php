@@ -180,7 +180,7 @@ if ( ! function_exists( 'some_like_it_neat_scripts' ) ) :
 			wp_enqueue_script( 'some_like_it_neat-js', get_stylesheet_directory_uri() . '/assets/js/bundle.js');
 		else :
 			// Concatonated Scripts
-			wp_enqueue_script( 'some_like_it_neat-js', get_stylesheet_directory_uri() . '/assets/js/bundle-min.js');
+			wp_enqueue_script( 'some_like_it_neat-js', get_stylesheet_directory_uri() . '/assets/js/bundle.min.js');
 		endif;
 	}
 	add_action( 'wp_enqueue_scripts', 'some_like_it_neat_scripts' );

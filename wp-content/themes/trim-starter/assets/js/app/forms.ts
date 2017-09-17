@@ -1,10 +1,9 @@
 import * as  jQuery from "jquery";
 
-class FormHandler {
+export class FormHandler {
     inputs: string[]
     form: string;
-    ajaxActionName: string;
-    payload: Object;
+    payload = {};
 
     constructor( public inputNames: string[], 
                  public formName: string,
@@ -12,59 +11,66 @@ class FormHandler {
                ) {
         this.inputs = inputNames;
         this.form = formName;
-        this.ajaxActionName = actionName;
+        this.payload = { action: actionName }; 
     }
 
    
-    valueCheck(item){
-       return jQuery(item).val() !== '';
+    private valueCheck(item: string): boolean {
+       return jQuery(`#${item}`).val() !== '';
     }
 
-    formValid() {
+    private formValid(): boolean {
        return this.inputNames.every(this.valueCheck);
      }
 
-    showErrorMessage() {
-        jQuery.each(this.inputNames, function(index, value) {
-          if ( jQuery(`${this.formName}-${value}`).val() === '' ) {
-            jQuery(`${this.formName}-${value}` + '-error').removeClass('hidden');
-            jQuery(`${this.formName}-${value}`).addClass('input-error');
+    private showErrorMessage(): void {
+        jQuery.each(this.inputNames, (index, value) => {
+          if ( jQuery(`#${value}`).val() === '' ) {
+            jQuery(`#${value}-error`).removeClass('hidden');
+            jQuery(`#${value}`).addClass('error-message');
           } else {
-            jQuery(`${this.formName}-${value}` + '-error').addClass('hidden');
-            jQuery(`${this.formName}-${value}`).removeClass('input-error');
+            jQuery(`#${value}-error`).addClass('hidden');
+            jQuery(`#${value}`).removeClass('error-message');
           }
         });
     }
 
-    showSucessAndReset() {
-        jQuery('.error-message').addClass('hidden');
-        jQuery(`${this.formName}-success`).removeClass('hidden');
-        jQuery(`${this.formName}`)[0].reset();
+    private showSucessAndReset(): void {
+        this.showErrorMessage(); 
+        jQuery(`#${this.form}-success`).removeClass('hidden');
+        let form = <HTMLFormElement>jQuery(`#${this.form}`)[0]
+        form.reset();
+        jQuery('body').addClass('loaded');
     }
 
     // create data object to be passed to server
-    makePayload() {
+    private makePayload(): void {
         this.inputNames.forEach( value => {
-            Object.defineProperty(this.payload, value, { value: jQuery(value).val() });
+            this.payload[value] = jQuery(`#${value}`).val(); 
         })
     }
 
-    submitForm() {
-        // ajax action wordpress is looking for to complete request
-        let action = { action: this.ajaxActionName }; 
-        // typescript object spread operator works like Object.assign
-        let data = { ...this.payload, ...action };
+    submitForm(): void {
+      this.makePayload();
 
-        jQuery.post('/wp-admin/admin-ajax.php', data, function(response){
-          jQuery('#spinner').addClass('hidden');
+      if ( this.formValid() ) {
+        let data = this.payload;
+        jQuery('body').removeClass('loaded');
+
+        jQuery.post('/wp-admin/admin-ajax.php', data, (response) => {
           if(response.message) {
             this.showSucessAndReset();
           } else if(response.success === false) {
-            jQuery(`${this.formName}-form-error`)
+            jQuery(`${this.formName}-error`)
               .text(response.data.error)
               .removeClass('hidden');
           }
+
         });
+
+      } else {
+        this.showErrorMessage();
+      }
                 
     }
 }

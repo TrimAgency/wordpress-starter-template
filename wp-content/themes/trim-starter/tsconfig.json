@@ -6,8 +6,9 @@
         "downlevelIteration": true,
         "noImplicitAny": false,
         "noEmitOnError": false,
-        "strictNullChecks": true,
-        "experimentalDecorators": true
+        "strictNullChecks": false,
+        "experimentalDecorators": true,
+        "skipLibCheck": true
     },
     "exclude": [
         "assets/js/vendor",
