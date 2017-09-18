@@ -1,7 +1,7 @@
 # trim-starter
 
 Upon cloning the repo, cd into trim-starter theme dir.
-- `npm install` or `yarn install`
+- `yarn install`
 
 ## WP_CONFIG SETUP
 - open wp-config.php with text editor and replace DB_HOST with rackspace DB IP.
@@ -14,10 +14,17 @@ Upon cloning the repo, cd into trim-starter theme dir.
 ## Webpack
 - `webpack --watch` 
 - changes to typescript or javascript files compile to bundle.js and bundle-min.js
-- changes to SASS files compile to style.css
+- changes to SASS files compile to assets/css/style.css
 
+## DeployIgnore
+After changing the trim-starter folder name to your project name, open `.deployignore` and 
+change all references to folder `trim-starter` to your new folder name.  
 
-### Folder Structure
+## 3rd party js libraries
+Place files in `assets/js/vendor/` and enqueue file in `functions.php`. In your typescript files import statement
+should point to file in vendor folder.
+
+### Theme Folder Structure
 ---------------
 <pre style="max-height: 300px;"><code>Theme Root
     │    ├── assets
@@ -28,13 +35,12 @@ Upon cloning the repo, cd into trim-starter theme dir.
     │    |   |    |   ├── app.ts
     │    │   |    └── vendor
     │    |   |    |   ├── modernizr
-    │    |   |    |   └── selectivizr
     │    │   |    ├── bundle-min.js
     │    │   |    └── bundle.js
     │    ├── sass
     │    |   └── base
     │    |   └── components
-    │    |    └── layouts
+    │    |   └── layouts
     │    |   └── pages
     │    |   └── vendors
     |    ├── _main.scss
