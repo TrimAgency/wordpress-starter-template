@@ -4,7 +4,6 @@ Upon cloning the repo, cd into trim-starter theme dir.
 - `yarn install`
 
 ## WP_CONFIG SETUP
-- open wp-config.php with text editor and replace DB_HOST with rackspace DB IP.
 - add the following code under 'WP_DEBUG_DISPLAY':
 `define('WP_HOME','http://localhost:8000'); define('WP_SITEURL','http://localhost:8000');`
 
