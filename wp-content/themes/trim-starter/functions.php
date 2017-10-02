@@ -6,6 +6,7 @@
  */
 
 require('include/post-type-taxonomy.php');
+require('include/blog-index.php');
 
 if ( ! function_exists( 'some_like_it_neat_setup' ) ) :
 	/**
