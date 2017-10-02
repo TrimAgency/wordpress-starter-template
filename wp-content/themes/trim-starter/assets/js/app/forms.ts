@@ -1,11 +1,16 @@
-import * as  jQuery from "jquery";
+
+interface config {
+  inputType: string
+  inputId: string
+  required: boolean
+}
 
 export class FormHandler {
-    inputs: string[]
+    inputs: config[]
     form: string;
     payload = {};
 
-    constructor( public inputNames: string[], 
+    constructor( public inputNames: config[], 
                  public formName: string,
                  public actionName: string
                ) {
@@ -14,39 +19,55 @@ export class FormHandler {
         this.payload = { action: actionName }; 
     }
 
-   
-    private valueCheck(item: string): boolean {
-       return jQuery(`#${item}`).val() !== '';
+    private emailCheck(email): boolean {
+      const regEx: RegExp = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+      return regEx.test(email); 
+    }
+
+    private valueCheck(inputValue): boolean {
+       return inputValue !== '';
+    }
+    private validator(item: config) {
+      let inputValue = jQuery(`#${item.inputId}`).val()
+      if (item.inputType === 'email') {
+        return this.emailCheck(inputValue)
+      } else if( item.required ) {
+        return this.valueCheck(inputValue)
+      }
     }
 
     private formValid(): boolean {
-       return this.inputNames.every(this.valueCheck);
+       return this.inputNames.every(this.validator);
      }
 
     private showErrorMessage(): void {
-        jQuery.each(this.inputNames, (index, value) => {
-          if ( jQuery(`#${value}`).val() === '' ) {
-            jQuery(`#${value}-error`).removeClass('hidden');
-            jQuery(`#${value}`).addClass('error-message');
+        jQuery.each(this.inputNames, (index, item) => {
+          if ( jQuery(`#${item.inputId}`).val() === '' ) {
+            jQuery(`#${item.inputId}-error`).removeClass('hidden');
+            jQuery(`#${item.inputId}`).addClass('error-message');
           } else {
-            jQuery(`#${value}-error`).addClass('hidden');
-            jQuery(`#${value}`).removeClass('error-message');
+            jQuery(`#${item.inputId}-error`).addClass('hidden');
+            jQuery(`#${item.inputId}`).removeClass('error-message');
           }
         });
     }
 
     private showSucessAndReset(): void {
-        this.showErrorMessage(); 
+        // clear error messages
+        this.showErrorMessage();
+        // show success message 
         jQuery(`#${this.form}-success`).removeClass('hidden');
+        // reset form
         let form = <HTMLFormElement>jQuery(`#${this.form}`)[0]
         form.reset();
+        // hide spinner
         jQuery('body').addClass('loaded');
     }
 
     // create data object to be passed to server
     private makePayload(): void {
-        this.inputNames.forEach( value => {
-            this.payload[value] = jQuery(`#${value}`).val(); 
+        this.inputNames.forEach( item => {
+            this.payload[item.inputId] = jQuery(`#${item.inputId}`).val(); 
         })
     }
 
@@ -55,13 +76,14 @@ export class FormHandler {
 
       if ( this.formValid() ) {
         let data = this.payload;
+        // show spinner
         jQuery('body').removeClass('loaded');
 
         jQuery.post('/wp-admin/admin-ajax.php', data, (response) => {
           if(response.message) {
             this.showSucessAndReset();
           } else if(response.success === false) {
-            jQuery(`${this.formName}-error`)
+            jQuery(`${this.form}-error`)
               .text(response.data.error)
               .removeClass('hidden');
           }

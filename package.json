@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@types/jquery": "^3.2.12"
+  },
+  "dependencies": {
+    "@types/jquery": "^3.2.12"
+  }
+}
