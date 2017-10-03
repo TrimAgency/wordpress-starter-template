@@ -68,19 +68,114 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(2);
+module.exports = __webpack_require__(4);
 
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 // Entry point for TS /JS.
-// make seperate files for each group of functionality and import into app.ts
+// add any global js functionality to the onload function
+Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__(2);
+window.onload = function (event) {
+    var path = location.pathname;
+    router_1.router(path);
+};
 
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var blog_index_1 = __webpack_require__(3);
+// For example import { home } from './routes/home';
+// routes object to assign pathname to function for that route
+var routes = {
+    // For example  "/": () => home()
+    "/blog/": function () { return blog_index_1.blogIndex(); }
+};
+function router(url) {
+    if (routes[url]) {
+        routes[url]();
+    }
+}
+exports.router = router;
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function blogIndex() {
+    var max;
+    // default options for the loadMorePosts function
+    var loadMoreOptions = {
+        loadCount: 1,
+        fetchCount: 3
+    };
+    // start spinner until server responds with posts
+    function startSpin() {
+        jQuery('body').addClass('no-scroll');
+        jQuery('#spinner').removeClass('hidden');
+    }
+    function stopSpin() {
+        jQuery('body').removeClass('no-scroll');
+        jQuery('#spinner').addClass('hidden');
+    }
+    // AJAX for infinite scroll pagination
+    function loadMorePosts(pageNumber, postsPerPage) {
+        var query = 'action=infinite_scroll&page_no=' + pageNumber +
+            '&loop_file=loop&posts_per_page=' + postsPerPage;
+        jQuery.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: 'post',
+            data: query,
+            success: function (response) {
+                if (response === 'max') {
+                    max = true; // reached max pagination
+                    jQuery('#max-blog-posts').removeClass('hidden');
+                    stopSpin();
+                }
+                else {
+                    jQuery('#blog-index').append(response);
+                    stopSpin();
+                }
+            }
+        });
+    }
+    // on init load posts
+    function onInit() {
+        startSpin();
+        loadMorePosts(loadMoreOptions.loadCount, loadMoreOptions.fetchCount);
+        loadMoreOptions.loadCount += 1;
+    }
+    jQuery(window).on('scroll', function () {
+        var scrollHeight = $(window).scrollTop();
+        var windowHeight = $(window).height();
+        var docHeight = $(document).height();
+        if (!max && (scrollHeight + windowHeight) === docHeight) {
+            startSpin();
+            loadMorePosts(loadMoreOptions.loadCount, loadMoreOptions.fetchCount);
+            loadMoreOptions.loadCount += 1;
+        }
+    });
+    onInit();
+}
+exports.blogIndex = blogIndex;
+
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
