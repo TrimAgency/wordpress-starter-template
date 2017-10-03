@@ -7,6 +7,8 @@ const routes = {
 
 export function router(url): void {
 
+  if( routes[url] ) {
     routes[url]();
+  }
 
 }
