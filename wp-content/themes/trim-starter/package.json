@@ -14,7 +14,8 @@
     "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "unminified-webpack-plugin": "^1.2.0",
-    "webpack": "^3.0.0"
+    "webpack": "^3.0.0",
+    "@types/jquery": "^3.2.12"
   },
   "engines": {
     "node": "6.9.2",
