@@ -19,7 +19,7 @@ get_header(); ?>
 
   <main id="main">
 
-    <h1 class="blog-header lowercase page-title">Never Stop Breathing</h1>
+    <h1 class="blog-header lowercase page-title"></h1>
 
     <section id="blog-index" class="section"></section>
 
