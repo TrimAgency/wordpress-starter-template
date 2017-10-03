@@ -7,19 +7,12 @@
  *
  * @package some_like_it_neat
  */
-/** important! keep below code in case PO changes mind! */
-/* $args = array( 'post_type' => 'post', */
-/*                'post_status' => 'publish', */
-/*                'posts_per_page' => 1, */
-/*                'category_name' => 'Featured'  ); */
-
-/* $query = new WP_Query( $args ); */
 
 get_header(); ?>
 
   <main id="main">
 
-    <h1 class="blog-header lowercase page-title">Never Stop Breathing</h1>
+    <h1 class="blog-header lowercase page-title"></h1>
 
     <section id="blog-index" class="section"></section>
 
