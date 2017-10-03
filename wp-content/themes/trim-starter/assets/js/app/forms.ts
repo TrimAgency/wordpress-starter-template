@@ -60,8 +60,8 @@ export class FormHandler {
         // reset form
         let form = <HTMLFormElement>jQuery(`#${this.form}`)[0]
         form.reset();
-        // hide spinner
-        jQuery('body').addClass('loaded');
+        jQuery('#spinner').addClass('hidden');
+
     }
 
     // create data object to be passed to server
@@ -76,8 +76,8 @@ export class FormHandler {
 
       if ( this.formValid() ) {
         let data = this.payload;
-        // show spinner
-        jQuery('body').removeClass('loaded');
+
+        jQuery('#spinner').removeClass('hidden');
 
         jQuery.post('/wp-admin/admin-ajax.php', data, (response) => {
           if(response.message) {
