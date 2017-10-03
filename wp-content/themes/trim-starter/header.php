@@ -32,6 +32,14 @@
 
 <body <?php body_class(); ?>>
 
+  <div id="spinner" class="hidden overlay-wrap">
+     <div class="spinner-wrap">
+      <div class="spinner">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div> 
+    </div>
+  </div>
+
 
 <div class="hfeed site">
 
