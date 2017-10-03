@@ -69,6 +69,9 @@ Modified to fit Trim Agency SCSS style guide.
 /*--------------------------------------------------------------
 5.0 Layout
 --------------------------------------------------------------*/
+@import 'pages/home';
+@import 'layouts/blog';
+@import 'layouts/spinner';
 
     /*--------------------------------------------------------------
     6.1 Header

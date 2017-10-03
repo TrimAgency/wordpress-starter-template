@@ -9,13 +9,13 @@ export function blogIndex() {
   
  // start spinner until server responds with posts
  function startSpin(): void {
-   $('body').addClass('no-scroll');
-   $('#spinner').removeClass('hidden');
+   jQuery('body').addClass('no-scroll');
+   jQuery('#spinner').removeClass('hidden');
  }
 
  function stopSpin(): void {
-   $('body').removeClass('no-scroll');
-   $('#spinner').addClass('hidden');
+   jQuery('body').removeClass('no-scroll');
+   jQuery('#spinner').addClass('hidden');
  }
 
  // AJAX for infinite scroll pagination
@@ -23,17 +23,17 @@ export function blogIndex() {
       var query = 'action=infinite_scroll&page_no=' + pageNumber + 
           '&loop_file=loop&posts_per_page=' + postsPerPage;
 
-      $.ajax({
+      jQuery.ajax({
           url: '/wp-admin/admin-ajax.php',
           type: 'post',
           data: query,
           success: function(response){
               if ( response === 'max' ) {
                 max = true; // reached max pagination
-                $('#max-blog-posts').removeClass('hidden');
+                jQuery('#max-blog-posts').removeClass('hidden');
                 stopSpin();
               } else {
-                $('#blog-index').append(response);
+                jQuery('#blog-index').append(response);
                 stopSpin();
               }
           }
@@ -47,7 +47,7 @@ export function blogIndex() {
       loadMoreOptions.loadCount+=1;
   }
    
-  $(window).on('scroll', function(){ 
+  jQuery(window).on('scroll', function(){ 
     let scrollHeight = $(window).scrollTop();
     let windowHeight = $(window).height();
     let docHeight = $(document).height();

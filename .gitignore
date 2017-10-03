@@ -65,6 +65,8 @@ node_modules
 .idea/
 library/vendors/composer
 assets/img/.DS_Store
+assets/js/bundle.js
+assets/js/bundle.min.js
 
 # Wordpress files
 wp-admin
