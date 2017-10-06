@@ -23,6 +23,37 @@ change all references to folder `trim-starter` to your new folder name.
 Place files in `assets/js/vendor/` and enqueue file in `functions.php`. In your typescript files import statement
 should point to file in vendor folder.
 
+## Lazy loaded blog index
+In the wordpress admin dashboard, create a page called "blog" and assign template: "Full-Width, Blog". "Full-Width, Blog" 
+page template is located in the theme folder: [page-templates/template-blog.php](https://github.com/TrimAgency/wordpress-starter-template/blob/master/wp-content/themes/trim-starter/page-templates/template-blog.php). 
+Once the "blog" page is published navigating to `your sites url/blog/` will lazy load blog posts 3 at a time. To change the 
+loading configuration make your changes in [blog-index.ts](https://github.com/TrimAgency/wordpress-starter-template/blob/master/wp-content/themes/trim-starter/assets/js/app/routes/blog-index.ts).
+
+## Global javascript
+If you need logic to run globaly, add an import statement to [app.ts](https://github.com/TrimAgency/wordpress-starter-template/blob/master/wp-content/themes/trim-starter/assets/js/app/app.ts)
+Then add your import to the window.onload callback.
+```
+import { myAwesomeFunction } from "./global/awesome"
+
+window.onload = (event) -> {
+  // add after router(path)
+  myAwesomeFunction()
+}
+```
+
+## URL specific javascript
+For logic that is specific to a page, add an import staetment fo [router.ts](https://github.com/TrimAgency/wordpress-starter-template/blob/master/wp-content/themes/trim-starter/assets/js/app/app.ts)
+Add your route and import to the routes object.
+```
+import { myAwesomeHomeThang } from './routes/home.ts';
+
+const routes = {
+  "/home": () => myAwesomeHomeThang()
+}
+
+```
+For consistency please name your file the name of the route and place in `/assets/js/app/routes/` dir.
+
 ### Theme Folder Structure
 ---------------
 <pre style="max-height: 300px;"><code>Theme Root
