@@ -12,7 +12,6 @@ get_header(); ?>
 
 <div class="home-content">
 
-  
 </div><!-- #primary -->
 
 <?php get_footer(); ?>
