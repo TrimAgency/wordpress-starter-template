@@ -1,22 +1,24 @@
+export interface config {
+  formId: string
+  actionName: string
+  inputs: input[];
+}
 
-interface config {
+interface input {
   inputType: string
   inputId: string
   required: boolean
 }
 
 export class FormHandler {
-    inputs: config[]
+    inputs: input[]
     form: string;
     payload = {};
 
-    constructor( public inputNames: config[], 
-                 public formName: string,
-                 public actionName: string
-               ) {
-        this.inputs = inputNames;
-        this.form = formName;
-        this.payload = { action: actionName }; 
+    constructor( public config: config ) {
+        this.inputs = config.inputs;
+        this.form = config.formId;
+        this.payload = { action: config.actionName };
     }
 
     private emailCheck(email): boolean {
@@ -24,10 +26,10 @@ export class FormHandler {
       return regEx.test(email); 
     }
 
-    private valueCheck(inputValue): boolean {
+    private valueCheck(inputValue: string | number | string[]): boolean {
        return inputValue !== '';
     }
-    private validator(item: config) {
+    private validator(item: input) {
       let inputValue = jQuery(`#${item.inputId}`).val()
       if (item.inputType === 'email') {
         return this.emailCheck(inputValue)
@@ -37,12 +39,15 @@ export class FormHandler {
     }
 
     private formValid(): boolean {
-       return this.inputNames.every(this.validator);
+       let self = this;
+       return this.inputs.every(this.validator, self);
      }
 
     private showErrorMessage(): void {
-        jQuery.each(this.inputNames, (index, item) => {
-          if ( jQuery(`#${item.inputId}`).val() === '' ) {
+        jQuery.each(this.inputs, (index, item) => {
+          let inputValue = jQuery(`#${item.inputId}`).val()
+          if ( item.required && !this.valueCheck(inputValue) ||
+               item.inputType == 'email' && !this.emailCheck(inputValue) ) {
             jQuery(`#${item.inputId}-error`).removeClass('hidden');
             jQuery(`#${item.inputId}`).addClass('error-message');
           } else {
@@ -66,7 +71,7 @@ export class FormHandler {
 
     // create data object to be passed to server
     private makePayload(): void {
-        this.inputNames.forEach( item => {
+        this.inputs.forEach( item => {
             this.payload[item.inputId] = jQuery(`#${item.inputId}`).val(); 
         })
     }
@@ -76,6 +81,7 @@ export class FormHandler {
 
       if ( this.formValid() ) {
         let data = this.payload;
+        console.log(data);
 
         jQuery('#spinner').removeClass('hidden');
 
