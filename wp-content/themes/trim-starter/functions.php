@@ -6,6 +6,8 @@
  */
 
 require('include/post-type-taxonomy.php');
+require('include/pathname-aliases.php');
+require('include/helper-functions.php');
 require('include/blog-index.php');
 
 if ( ! function_exists( 'some_like_it_neat_setup' ) ) :
@@ -200,7 +202,7 @@ if ( ! function_exists( 'some_like_it_neat_styles' ) ) :
 				get_template_directory_uri() . '/assets/css/style.css', '', '1.2', 'screen'
 			);
 			wp_enqueue_style( 'some_like_it_neat-style' );
-			
+
 			else :
 			wp_register_style(
 				'some_like_it_neat-style', // handle name
@@ -267,4 +269,3 @@ function wpse_wpautop_nobr( $content ) {
 
 add_filter( 'the_content', 'wpse_wpautop_nobr' );
 add_filter( 'the_excerpt', 'wpse_wpautop_nobr' );
-
