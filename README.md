@@ -11,12 +11,12 @@ Upon cloning the repo, cd into trim-starter theme dir.
 - `docker-compose up`
 
 ## Webpack
-- `webpack --watch` 
+- `npm start` 
 - changes to typescript or javascript files compile to bundle.js and bundle-min.js
 - changes to SASS files compile to assets/css/style.css
 
 ## DeployIgnore
-After changing the trim-starter folder name to your project name, open `.deployignore` and 
+After changing the trim-starter folder name to your project name, open `.deployignore` and
 change all references to folder `trim-starter` to your new folder name.  
 
 ## 3rd party js libraries
@@ -24,9 +24,9 @@ Place files in `assets/js/vendor/` and enqueue file in `functions.php`. In your 
 should point to file in vendor folder.
 
 ## Lazy loaded blog index
-In the wordpress admin dashboard, create a page called "blog" and assign template: "Full-Width, Blog". "Full-Width, Blog" 
-page template is located in the theme folder: [page-templates/template-blog.php](https://github.com/TrimAgency/wordpress-starter-template/blob/master/wp-content/themes/trim-starter/page-templates/template-blog.php). 
-Once the "blog" page is published navigating to `your sites url/blog/` will lazy load blog posts 3 at a time. To change the 
+In the wordpress admin dashboard, create a page called "blog" and assign template: "Full-Width, Blog". "Full-Width, Blog"
+page template is located in the theme folder: [page-templates/template-blog.php](https://github.com/TrimAgency/wordpress-starter-template/blob/master/wp-content/themes/trim-starter/page-templates/template-blog.php).
+Once the "blog" page is published navigating to `your sites url/blog/` will lazy load blog posts 3 at a time. To change the
 loading configuration make your changes in [blog-index.ts](https://github.com/TrimAgency/wordpress-starter-template/blob/master/wp-content/themes/trim-starter/assets/js/app/routes/blog-index.ts).
 
 ## Global javascript

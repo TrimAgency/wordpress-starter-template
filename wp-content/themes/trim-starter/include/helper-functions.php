@@ -1,6 +1,6 @@
 <?php
 
-// // Truncat Text by char count
+// Truncat Text by char count
 function truncate_text($content, $snippet_len = 50) {
   $content =  html_entity_decode($content);
   $text = substr($content, 0, $snippet_len);
@@ -14,7 +14,7 @@ function truncate_text($content, $snippet_len = 50) {
 }
 
 
-// // Simple API client - curl wrapper
+// Simple API client - curl wrapper
 function callAPI($method, $url, $data = false) {
   $curl = curl_init();
 
@@ -47,9 +47,9 @@ function callAPI($method, $url, $data = false) {
   return $result;
 }
 
-// // Sepcial Number Formatting
-// // pass in the_field($value) and respective $unit
-// // dependancy: ACF [Pro]
+// Sepcial Number Formatting
+// pass in the_field($value) and respective $unit
+// dependancy: ACF [Pro]
 function format_num($value, $unit) {
 	$num = get_field($value);
 	// format number comma
