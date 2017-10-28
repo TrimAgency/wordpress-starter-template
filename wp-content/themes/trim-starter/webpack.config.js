@@ -6,7 +6,7 @@ const extractCSS = new ExtractTextPlugin({ filename: '../css/style.css'});
 
 module.exports = {
   entry: [
-           './assets/js/app/app.ts', 
+           './assets/js/app/app.ts',
            './assets/sass/style.scss'
   ],
   output: {
@@ -26,15 +26,17 @@ module.exports = {
         test: /\.ts$/,
         use: 'awesome-typescript-loader'
       },
-      { 
+      {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
-      }   
+      }
     ]
   },
   plugins: [
     // Output a unminified compiled js file
-    new UnminifiedWebpackPlugin(),
+    new UnminifiedWebpackPlugin({
+      exclude: /style.css/
+    }),
     // Output compiled CSS file from all SCSS files
     extractCSS,
     // Minifiy the compiled js file
