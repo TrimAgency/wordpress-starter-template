@@ -22,63 +22,73 @@ along with Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normali
 and Blueprint http://www.blueprintcss.org/
 
 Modified to fit Trim Agency SCSS style guide.
-
 */
 
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
-1.0 - Base
-2.0 - Vendors
-3.0 - Pages
-4.0 - Components
-5.0 - Layout
-    5.1 - Header
-    5.2 - Footer
-6.0 - Flex Box Grid
-
+1.0 - Vendors
+    1.1 - Vendor Overrides
+2.0 - Base
+3.0 - Components
+    3.1 - Atoms & Molecules
+4.0 - Layout
+    4.1 - Header
+    4.2 - Footer
 --------------------------------------------------------------*/
-
 
 /*--------------------------------------------------------------
-1.0 Base 
+1.0 Vendors
 --------------------------------------------------------------*/
-@import 'base/base';
-@import 'base/fonts';
-@import 'base/grid';
-@import 'base/helpers';
-@import 'base/variables';
-@import 'base/typography';
-
-/*--------------------------------------------------------------
-2.0 Vendors
---------------------------------------------------------------*/
+@import 'vendors/flexbox-grid';
+@import 'vendors/icomoon';
+@import 'vendors/include-media';
 @import 'vendors/normalize';
 
 /*--------------------------------------------------------------
-3.0 Pages
+1.1 Vendor Overrides
 --------------------------------------------------------------*/
-@import 'pages/home';
+@import 'vendors/include-media-overrides';
+
 
 /*--------------------------------------------------------------
-4.0 Components/Add-ons
+2.0 Base
+--------------------------------------------------------------*/
+@import 'base/variables'; /* keep this first */
+@import 'base/functions';
+@import 'base/helpers';
+@import 'base/mixins';
+@import 'base/typography';
+
+
+/*--------------------------------------------------------------
+3.0 Components
 --------------------------------------------------------------*/
 @import 'components/buttons';
 @import 'components/forms';
+@import 'components/spinner';
 
 /*--------------------------------------------------------------
-5.0 Layout
+3.1 Atoms & Molecules
 --------------------------------------------------------------*/
+@import 'components/atoms-molecules';
+
+
+/*--------------------------------------------------------------
+4.0 Layout
+--------------------------------------------------------------*/
+// @import 'layouts/common'; /* keep this first */
+/* -------- pages -------- */
+@import 'layouts/about';
 @import 'layouts/blog';
-@import 'layouts/spinner';
+@import 'layouts/contact';
 
-    /*--------------------------------------------------------------
-    6.1 Header
-    --------------------------------------------------------------*/
-    @import 'layouts/header';
+/*--------------------------------------------------------------
+4.1 Header
+--------------------------------------------------------------*/
+@import 'layouts/header';
 
-
-    /*--------------------------------------------------------------
-    6.6 Footer
-    --------------------------------------------------------------*/
-    @import 'layouts/footer';
+/*--------------------------------------------------------------
+4.2 Footer
+--------------------------------------------------------------*/
+@import 'layouts/footer';
