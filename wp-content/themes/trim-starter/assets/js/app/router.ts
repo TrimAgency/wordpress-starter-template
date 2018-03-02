@@ -6,10 +6,13 @@ const routes = {
     "/blog/": () => blogIndex(),
 };
 
-export function router(url): void {
+export function router(path): void {
 
-  if( routes[url] ) {
-    routes[url]();
-  }
-
+  let pathMatch = path.match(/\/(.*?)\//);
+  if (pathMatch) { 
+      pathMatch = pathMatch[0]; 
+      routes[pathMatch]();
+  } else if (path === '/') {
+      routes['/']();
+  } 
 }

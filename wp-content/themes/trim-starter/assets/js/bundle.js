@@ -100,9 +100,14 @@ var routes = {
     // For example  "/": () => home()
     "/blog/": function () { return blog_index_1.blogIndex(); },
 };
-function router(url) {
-    if (routes[url]) {
-        routes[url]();
+function router(path) {
+    var pathMatch = path.match(/\/(.*?)\//);
+    if (pathMatch) {
+        pathMatch = pathMatch[0];
+        routes[pathMatch]();
+    }
+    else if (path === '/') {
+        routes['/']();
     }
 }
 exports.router = router;
