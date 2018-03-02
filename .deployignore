@@ -9,6 +9,7 @@ wp-content/themes/trim-starter/assets/js/app/**
 
 ##Files to ignore
 .DS_Store
+.gitignore
 .htaccess
 docker-compose.yml
 license.txt
