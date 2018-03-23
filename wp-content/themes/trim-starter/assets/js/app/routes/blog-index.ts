@@ -1,3 +1,5 @@
+import 'gsap'; // greensock TweenMax library
+
 export function blogIndex() {
  let max;
 
