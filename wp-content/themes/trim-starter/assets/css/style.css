@@ -1,4 +1,4 @@
-/*
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,700,900);/*
 Theme Name: Some Like it Neat
 Theme URI: https://github.com/digisavvy/some-like-it-neat
 Author: Alex Vasquez
@@ -884,7 +884,7 @@ hr {
  */
 mark {
   background: #ff0;
-  color: black; }
+  color: #000; }
 
 /**
  * Correct font family set oddly in Safari 5 and Chrome.
