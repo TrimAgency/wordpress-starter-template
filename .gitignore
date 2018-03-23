@@ -89,5 +89,5 @@ wp-activate.php
 wp-blog-header.php
 wp-comments-post.php
 
-# Include Theme Index #
+# Include Theme index.php #
 !wp-content/themes/*/index.php
