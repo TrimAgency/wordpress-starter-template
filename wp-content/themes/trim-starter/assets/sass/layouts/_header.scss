@@ -1,7 +1,7 @@
 $header-height: 7rem;
 
 header {
-  border-bottom: 3px solid $black;
+  border-bottom: 3px solid rgba($black, 0.2);
   position: fixed;
   top: 0;
   width: 100%;
@@ -95,7 +95,7 @@ nav .menu-primary-menu-container ul {
       line-height: initial;
       margin-left: 2rem;
       &:hover {
-        color: $blue;
+        // color: $blue;
       }
     }
   }

@@ -56,7 +56,7 @@
 						<span class="hamburger-inner"></span>
 					</span>
 				</button>
-				<nav id="navigation" class="js-menu cl-effect-21">
+				<nav id="navigation" class="js-menu cl-effect-4">
 					<?php
 						wp_nav_menu(
 							array(
